@@ -1,2 +1,19 @@
-.env
-venv/
+  # Distribution / packaging
+  .Python
+ -env/
+  build/
+  develop-eggs/
+  dist/
+ @@ -79,11 +78,10 @@ celerybeat-schedule
+  # SageMath parsed files
+  *.sage.py
+  
+ -# dotenv
+ +# Environments
+  .env
+ -
+ -# virtualenv
+  .venv
+ +env/
+  venv/
+  ENV/
