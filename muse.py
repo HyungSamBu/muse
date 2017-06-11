@@ -28,7 +28,7 @@ def handle_command(command, channel):
         response = "Sure...write some more code then I can do that!"
     if command.startswith(TIMER_REQUEST):
     	set_time= int(re.search(r'\d+', command).group())
-		response= set_time
+    	response= set_time
     slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)
 
