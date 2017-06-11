@@ -1,5 +1,6 @@
 import os
 import time
+import re
 from slackclient import SlackClient
 
 
@@ -9,6 +10,7 @@ BOT_ID = os.environ.get("BOT_ID")
 # constants
 AT_BOT = "<@" + BOT_ID + ">"
 EXAMPLE_COMMAND = "do"
+TIMER_REQUEST= "set timer for" 
 
 # instantiate Slack & Twilio clients
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
@@ -24,6 +26,9 @@ def handle_command(command, channel):
                "* command with numbers, delimited by spaces."
     if command.startswith(EXAMPLE_COMMAND):
         response = "Sure...write some more code then I can do that!"
+    if command.startswith(TIMER_REQUEST):
+    	set_time= int(re.search(r'\d+', command).group())
+		response= set_time
     slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)
 
